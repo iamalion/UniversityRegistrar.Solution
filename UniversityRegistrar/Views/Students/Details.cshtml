@@ -5,11 +5,11 @@
 @using UniversityRegistrar.Models
 @model UniversityRegistrar.Models.Student
 
-<<div class="container">
+<div class="container">
     <h1>Student Details</h1>
     <h3>@Html.DisplayNameFor(model => model.StudentName): @Html.DisplayFor(model => model.StudentName)</h3>
 </div>
-
+<div class="container">
 @if(@Model.JoinEntities.Count == 0)
 {
   <p>This student has not signed up for any courses.</p>
@@ -24,5 +24,7 @@ else
   }
   </ul>
 }
-
+</div>
+<div class="container">
 <p>@Html.ActionLink("Back to all students", "Index")</p>
+</div>

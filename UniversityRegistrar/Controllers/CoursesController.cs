@@ -41,5 +41,35 @@ namespace UniversityRegistrar.Controllers
                             .FirstOrDefault(course => course.CourseId == id);
         return View(thisCourse);
     }
+    public ActionResult Edit(int id)
+    {
+        Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+       
+        return View(thisCourse);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Course course)
+    {
+        _db.Courses.Update(course);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+        Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+        ViewBag.PageTitle = "Delete Course";
+        return View(thisCourse);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+        _db.Courses.Remove(thisCourse);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
   }
 }
+

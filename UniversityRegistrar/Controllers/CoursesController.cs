@@ -36,12 +36,10 @@ namespace UniversityRegistrar.Controllers
     public ActionResult Details(int id)
     {
         Course thisCourse = _db.Courses
-                                .Include (course => course.JoinEntities)
-                                .ThenInclude(join => join.Course)
-                                .FirstOrDefault(course => course.CourseId == id);
+                            .Include(course => course.JoinEntities)
+                            .ThenInclude(join => join.Student)
+                            .FirstOrDefault(course => course.CourseId == id);
         return View(thisCourse);
     }
-
-    
   }
 }

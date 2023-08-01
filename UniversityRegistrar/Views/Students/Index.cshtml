@@ -1,4 +1,8 @@
-@using UniversityRegistrar.Models
+@{
+    Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
 
 <h1>Students</h1>
 
@@ -13,5 +17,5 @@
         <li>@Html.ActionLink($"Name: {student.StudentName}", "Details", new { id = student.StudentId})</li>
     }
 </ul>
-<p>@Html.ActionLink("Add new student", "Create")</p>
+<p>@Html.ActionLink("Add new student", "Create", "Students")</p>
 <p>@Html.ActionLink("Return home", "Index", "Home")</p>

@@ -11,5 +11,6 @@ namespace UniversityRegistrar.Models
         [Display(Name = "Enrollment Date")]
         [DataType(DataType.Date)]
         public string EnrollDate { get; set; }
+        public List<CourseStudent> JoinEntities { get; }
     }
 }

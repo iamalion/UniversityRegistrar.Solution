@@ -1,0 +1,15 @@
+@{
+    Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Course
+
+<div class="container">
+  <h1>Add a New Course</h1>
+</div>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.CourseName)
+    @Html.TextBoxFor(model => model.CourseName)
+}

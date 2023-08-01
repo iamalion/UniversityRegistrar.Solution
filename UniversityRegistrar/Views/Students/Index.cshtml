@@ -14,7 +14,7 @@
 <ul>
     @foreach (Student student in Model)
     {
-        <li>@Html.ActionLink($"Name: {student.StudentName}", "Details", new { id = student.StudentId})</li>
+        <li>@Html.ActionLink($"Name: {student.StudentName}", "Details", new { id = student.StudentId })</li>
     }
 </ul>
 <p>@Html.ActionLink("Add new student", "Create", "Students")</p>

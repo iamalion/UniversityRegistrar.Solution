@@ -27,6 +27,7 @@ else
 </div>
 <div class="container">
     <p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentId })</p>
+    <p>@Html.ActionLink("Add Student to Course", "AddCourse", new { id = Model.StudentId })</p>
     <p>@Html.ActionLink("Delete Student", "Delete", new { id = Model.StudentId})</p>
-    <p>@Html.ActionLink("Back to all students", "Index")</p>
+    <p>@Html.ActionLink("Back to All Students", "Index")</p>
 </div>

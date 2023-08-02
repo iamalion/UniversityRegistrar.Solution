@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UniversityRegistrar.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,29 @@ namespace UniversityRegistrar.Controllers
         _db.SaveChanges();
         return RedirectToAction("Index");
     }
+    public ActionResult AddStudent(int id)
+    {
+        Course thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
+        List<Student> students = _db.Students.ToList();
+        SelectList studentList = new SelectList(students, "StudentId", "StudentName");
+        ViewBag.StudentId = studentList;
+        return View(thisCourse);
+    }
+
+    [HttpPost]
+    public ActionResult AddStudent(Course course, int studentId)
+    {
+      #nullable enable
+      CourseStudent? joinEntity = _db.CourseStudents.FirstOrDefault(join => (join.StudentId == studentId && join.CourseId == course.CourseId));
+      #nullable disable
+      if (joinEntity == null && studentId != 0)
+      {
+        _db.CourseStudents.Add(new CourseStudent() { StudentId = studentId, CourseId = course.CourseId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = course.CourseId });
+    }
+    
   }
 }
 

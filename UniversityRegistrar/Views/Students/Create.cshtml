@@ -10,9 +10,13 @@
 <hr />
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.StudentName)
-    @Html.TextBoxFor(model => model.StudentName)
-    @Html.LabelFor(model => model.EnrollDate)
-    @Html.TextBoxFor(model => model.EnrollDate, new {type="date"})
-    <input type="submit" value="Add new student" />
+    <div class="form-container">
+        @Html.LabelFor(model => model.StudentName)
+        @Html.TextBoxFor(model => model.StudentName)
+        @Html.LabelFor(model => model.EnrollDate)
+        @Html.TextBoxFor(model => model.EnrollDate, new {type="date"})
+    </div>
+    <div class="center">
+        <input type="submit" value="Add new student" />
+    </div>
 }
